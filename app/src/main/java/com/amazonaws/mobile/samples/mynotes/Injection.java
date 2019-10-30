@@ -22,6 +22,7 @@ import com.amazonaws.mobile.samples.mynotes.repository.NotesRepository;
 import com.amazonaws.mobile.samples.mynotes.services.AnalyticsService;
 import com.amazonaws.mobile.samples.mynotes.services.DataService;
 import com.amazonaws.mobile.samples.mynotes.services.aws.AWSAnalyticsService;
+import com.amazonaws.mobile.samples.mynotes.services.aws.AWSDataService;
 import com.amazonaws.mobile.samples.mynotes.services.aws.AWSService;
 import com.amazonaws.mobile.samples.mynotes.services.mock.MockAnalyticsService;
 import com.amazonaws.mobile.samples.mynotes.services.mock.MockDataService;
@@ -57,7 +58,7 @@ public class Injection {
         }
 
         if (dataService == null) {
-            dataService = new MockDataService();
+            dataService = new AWSDataService(context, awsService);
         }
 
         if (notesRepository == null) {
